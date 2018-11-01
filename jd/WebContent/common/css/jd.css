@@ -1,0 +1,51 @@
+@charset "utf-8";
+/*CSS Document*/
+
+/*通配符样式*/
+*{margin: 0;padding: 0;}
+body{font: 12px/1.5 Microsoft YaHei; color: #767676}
+
+/*页面结构*/
+.page{width: 100%;}
+.header{width: 100%;background: linear-gradient(to bottom, #fff 95%,#ddd,#fff)}
+.header_content{width: 1200px;overflow: hidden;margin: 0px auto}
+.header_content img{margin: 30px 0;float: left;}
+.header_content .title{margin: 35px 0 0 40px;float: left;font-size: 26px;}
+.main{width: 100%}
+.main_content{width: 1200px;overflow: hidden;margin: 0px auto}
+.footer{width: 100%;}
+.footer_content{width: 1200px;overflow: hidden;border-top: 1px solid #cccccc;margin: 0px auto}
+.menu_ul{overflow: hidden;width: 960px;margin: 30px auto 10px auto;}
+.menu_ul li{float: left;margin: 0px 5px;font-size: 13px;}
+.copyright_div{text-align: center;width: 400px;margin: 10px auto 40px auto;}
+
+/*字体样式*/
+.jd_font_1{font-size: 26px;color: #363636}
+.jd_font_2{font-size: 16px;}
+.jd_font_3{color: #e4393c;font-size: 18px;font-weight: 700;}
+.jd_font_4{color: #e4393c;font-size: 13px;}
+
+/*链接样式*/
+a{text-decoration: none;}
+.jd_link_1{color: red;}
+.jd_link_1:hover{text-decoration: underline;}
+.jd_link_2{color: #767676;font-size: 14px;}
+.jd_link_2:hover{text-decoration: underline;color: #363636;}
+.jd_link_3{color: #b61d1d;font-size: 14px;}
+.jd_link_3:hover{text-decoration: underline;}
+.jd_link_4{color: red;text-decoration: underline;font-weight: bold;}
+.menu_ul a{color: gray;font-size: 13px;text-decoration: none;}
+.menu_ul a:hover{text-decoration: underline;color: red;}
+.jd_link_5{color: blue;font-size: 14px;}
+.jd_link_5:hover{text-decoration: underline;color: #b61d1d;}
+
+/*列表样式*/
+ul{list-style: none;}
+.jd_li_1{border-top: 1px solid #cccccc;margin: 20px 0;}
+
+/*按钮样式*/
+.jd_bt_1{background-color: #ee2222;color: #fff;border: none;cursor: pointer;font-size: 16px;}
+
+/*表格样式*/
+.jd_tb_1{border:1px solid #cccccc;border-spacing: 0px;}
+.jd_td_1{border-bottom:1px solid #cccccc;border-right: 1px solid #cccccc;}

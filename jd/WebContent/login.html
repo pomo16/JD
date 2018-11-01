@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>京东-欢迎登录</title>
+	<meta charset="utf-8"/>
+	<link rel="stylesheet" type="text/css" href="common/css/jd.css">
+	<style type="text/css">
+		#login_div{
+			width: 990px;
+			height: 475px;
+			margin: 0 auto;
+			background-image: url(common/image/login_bg.jpg);
+		}
+		#form_ul{
+			width: 350px;
+			float: right;
+			background-color: white;
+			margin-top: 65px; 
+		}
+		#form_ul li{
+			margin-bottom: 20px;
+		}
+		.li01{
+			margin-left: 20px;
+		}
+		#form_ul .li01 div{
+			border: 1px solid #cccccc;
+			display: inline-block;
+			height: 38px;
+			width: 270px;
+			vertical-align: top;
+			margin-left: -5px;
+		}
+		#form_ul .li01 img{
+			border: 1px solid #cccccc;
+		}
+
+		#form_ul input{
+			width: 250px;
+			height: 30px;
+			border: none;
+			margin: 4px; 
+		}
+		#form_ul input[type="submit"]{
+			width: 310px;
+			height: 35px;
+			letter-spacing: 10px;
+		}
+
+		/*输入框样式*/
+		input{outline:none;}
+	</style>
+	<script type="text/javascript">
+		function loginError() {
+			var url = window.location.href;
+			if(url.indexOf("flag=loginError") != -1) {
+				var errorMessage = document.getElementById("errorMessage");
+				errorMessage.style.display = "inline";
+			}
+		}
+	</script>
+</head>
+<body onload="loginError()">
+	<div class="page">
+		<div class="header" style="background: none;">
+			<div class="header_content">
+				<img src="common/image/logo.png">
+				<div class="title jd_font_1">欢迎登录</div>
+			</div>
+		</div>
+		<div class="main" style="background-color: #2aa8f3;">
+			<div class="main_content">
+				<div id="login_div">
+					<form action="maintain/LoginServlet" method="post">
+						<ul id="form_ul">
+							<li style="margin: 30px 0 0 50px;">
+								<span class="jd_font_3" style="margin-right: 10px;">账户登录</span>
+								<span id="errorMessage" class="jd_font_4" style="display: none;">账号或密码错误，请重新登录。</span>
+							</li>
+							<li class="jd_li_1"></li>
+							<li class="li01">
+								<img src="common/image/login1.png"/>
+								<div>
+									<input type="text" name="userName" placeholder="用户名"/>
+								</div>
+							</li>
+							<li class="li01">
+								<img src="common/image/login2.png"/>
+								<div>
+									<input type="password" name="password" placeholder="密码"/>
+								</div>
+							</li>
+							<li class="li01">
+								<input type="submit" class="jd_bt_1" value="登 录"/>
+							</li>
+							<li class="jd_li_1"></li>
+							<li style="margin: 0 0 10px 250px;">
+								<img src="common/image/login3.png" style="height: 21px;">
+								<a href="register.html" class="jd_link_3" style="vertical-align: top;">立即注册</a>
+							</li>
+						</ul>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="footer">
+			<div class="footer_content" style="border: none;">
+				<ul class="menu_ul">
+					<li><a href="http://jd.com">关于我们</a></li>
+					<li>|</li>
+					<li><a href="#">联系我们</a></li>
+					<li>|</li>
+					<li><a href="#">人才招聘</a></li>
+					<li>|</li>
+					<li><a href="#">商家入驻</a></li>
+					<li>|</li>
+					<li><a href="#">广告服务</a></li>
+					<li>|</li>
+					<li><a href="#">手机京东</a></li>
+					<li>|</li>
+					<li><a href="#">友情链接</a></li>
+					<li>|</li>
+					<li><a href="#">销售联盟</a></li>
+					<li>|</li>
+					<li><a href="#">京东社区</a></li>
+					<li>|</li>
+					<li><a href="#">京东公益</a></li>
+					<li>|</li>
+					<li><a href="#">English Site</a></li>
+				</ul>
+				<div class="copyright_div">Copyright &copy; 2004-2018  京东JD.com 版权所有</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

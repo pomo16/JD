@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>登录信息表</title>
+<script src="../common/js/jquery-3.3.1.min.js"></script>
+<link rel="stylesheet" type="text/css" href="../common/easyui/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="../common/easyui/themes/icon.css">
+<script type="text/javascript" src="../common/easyui/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="../common/easyui/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript">
+	$(function(){
+		var url = window.location.href;
+		$("#login_info_table").datagrid({
+			title:'登录信息表',
+			singleSelect:false,
+			collapsible:false,
+			url:'QueryLoginInfoServlet?' + url.split("?")[1],
+			method:'get',
+			rownumbers:true,
+			iconCls:'icon-save',
+			pagination:true,
+			pageList:[2,5,8,10],
+			pageSize:10,
+			width:1000,
+			height:480,
+			columns:[[
+				{field:'ck',checkbox:true},
+				{field:'loginTimeStr',title:'登录时间',width:200},
+				{field:'loginIp',title:'登录IP',width:500}
+			]]
+		});
+	});
+</script>
+</head>
+<body>
+	<a href="user_info.html" class="easyui-linkbutton" style="margin-top:3px" data-options="iconCls:'icon-back',plain:true">返回</a>
+	<table id='login_info_table'></table>
+</body>
+</html>

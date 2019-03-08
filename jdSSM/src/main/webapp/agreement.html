@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>注册协议</title>
+<link rel="stylesheet" href="common/bootstrap/bootstrap.min.css">
+<script src="common/js/jquery-3.3.1.min.js"></script>
+<script src="common/bootstrap/bootstrap.min.js"></script>
+<script src="common/colorbox/jquery.colorbox-min.js"></script>
+<link rel="stylesheet" href="common/colorbox/colorbox.css">
+<link rel="stylesheet" href="common/css/jd.css">
+<script type="text/javascript">
+	$(function(){
+		$("#cancelBt").click(function(){
+			parent.$.colorbox.close();
+			
+		});
+		$("#agreeBt").click(function(){
+			parent.$("#cboxOverlay").css("display","none");
+			parent.$("#colorbox").css("display","none");
+			parent.$("#userName").focus();
+		});
+	});
+</script>
+<style type="text/css">
+	#dialog_title{
+		color:#000;
+		font-weight: 700;
+		background-color: #f3f3f3;
+		padding:5px 10px;
+	}
+	
+	#dialog_content p{
+		font-weight: bold;
+		text-decoration: underline;
+	}
+	#dialog_content ul li{
+		float: left;
+		width:350px;
+	}
+	#dialog_content ul{
+		overflow: hidden;
+	}
+	
+</style>
+</head>
+
+<body>
+	<div class="page">
+		<div class="container-fluid">
+			<div id="dialog_title">
+				京东用户注册协议和隐私政策				
+			</div>
+			<div id="dialog_content" class="m-3">
+				<p>
+					在您注册成为京东用户的过程中，您需要完成我们的注册流程并通过点击同意的形式在线签署以下协议，请您务必仔细阅读、充分理解协议中的条款内容后再点击同意（尤其是以粗体并下划线标识的条款，因为这些条款可能会明确您应履行的义务或对您的权利有所限制）：
+				</p>
+				<a href="#" class="jd_link_4">《京东用户注册协议》</a>
+				<ul>
+					<li>1、本站服务条款的确认和接纳</li>
+					<li>7、配送</li>
+					<li>2、本站服务</li>
+					<li>8、所有权及知识产权条款</li>
+					<li>3、用户信息</li>
+					<li>9、责任限制及不承诺担保</li>
+					<li>4、用户依法言行义务</li>
+					<li>10、协议更新及用户关注义务</li>
+					<li>5、商品信息</li>
+					<li>11、法律管辖和适用《京东隐私政策》</li>
+					<li>6、订单</li>				
+				</ul>
+				<br>
+				<a href="#" class="jd_link_4">隐私政策</a>
+				<p>
+					在您注册成为京东用户的过程中，您需要完成我们的注册流程并通过点击同意的形式在线签署以下协议，请您务必仔细阅读、充分理解协议中的条款内容后再点击同意（尤其是以粗体并下划线标识的条款，因为这些条款可能会明确您应履行的义务或对您的权利有所限制）：
+	本隐私政策明确了我们的产品与/或服务所收集、使用及共享个人信息的类型方式和用途；以增强告知或即时提示的方式在收集、使用及共享个人信息时给予用户授权选择权，并在产品设置中允许用户即时撤销授权。明确了用户查询、更正和删除其个人信息的方式。增加了用户账户的锁定/解锁和注销功能，并提供给用户了30日后悔期。具体提纲如下：
+				</p>
+				<ul>
+					<li>1、我们如何收集和使用您的个人信息</li>
+					<li>5、您如何管理个人信息</li>
+					<li>2、我们如何使用Cookie和同类技术</li>
+					<li>6、未成年人信息的保护</li>
+					<li>3、我们如何共享、转让、公开披露您的个人信息</li>
+					<li>7、通知和修订</li>
+					<li>4、我们如何保护和保存您的个人信息</li>
+					<li>8、如何联系我们</li>				
+				</ul>
+			</div>
+			<div class="row mb-3">
+				<div class="col-md-3 offset-3">
+					<button type="button" id="cancelBt" class="btn btn-block btn-dark btn-lg">取消</button>
+				</div>
+				<div class="col-md-3">
+					<button type="button" id="agreeBt" class="btn btn-block btn-danger btn-lg">同意并继续</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

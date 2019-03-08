@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>   
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="common/fontawesome/css/all.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="common/bootstrap/bootstrap.min.css">
+    <script src="common/js/jquery-3.3.1.min.js"></script>
+    <script src="common/bootstrap/bootstrap.min.js"></script>
+    <script src="common/colorbox/jquery.colorbox-min.js"></script>
+    <link rel="stylesheet" href="common/colorbox/colorbox.css">
+    <script src="common/validation/jquery.validate.min.js"></script>
+	<script src="common/validation/messages_zh.min.js"></script>
+	<script src="common/validation/additional-methods.min.js"></script>
+	<script src="common/impromptu/jquery-impromptu.min.js"></script>
+	<link rel="stylesheet" href="common/impromptu/jquery-impromptu.min.css">
+    <link rel="stylesheet" href="common/css/jd.css">
+    <script type="text/javascript" src="register.js"></script>
+    <title>个人注册</title>
+    <style type="text/css">
+		.nav-link{padding: 0.5rem;}
+		.main .input-group-text, .main .form-control{font-size: 14px !important;border-radius: 0 !important;background-color: #ffffff;}
+		.main .input-group-text{width:100px}
+		.main .btn{border-radius: 0}				
+		#enterprise_ul a{
+			vertical-align: super;
+			display: inline-block;
+			margin-left: 10px;
+		}
+		#enterprise_ul{
+				width: 170px;
+				overflow: hidden;		
+				float:left;
+				margin:30px;
+		}
+		.main .container{
+			margin:20px auto 20px auto;
+		}
+		@media (min-width:768px){
+			.main-left{
+				border-right: 1px solid #cccccc;
+				padding:0 80px;
+			}
+			#enterprise_ul{
+				margin:60px 80px;
+			}
+			.main .container{
+				margin:60px auto 60px auto;
+			}
+		}
+		.rightMsg{width:20px;padding:18px 0 0 10px}
+		span.error{color:#ff8801}
+	</style>
+  </head>
+  <body>
+   	<div class="page">
+   		<div class="header">
+   			<div class="container">
+   				<div class="row">
+   					<div class="col-md-7">
+						<img src="common/images/logo.png"/>
+						<div class="title jd_font_1">欢迎注册</div>
+					</div>
+   					<div class="col-md-5 text-right">
+   						<div style="margin-top:15px;" class="jd_font_2">已有账号？
+						<a href="login.html" class="jd_link_1">请登录></a></div>
+   					</div>
+   				</div>
+   			</div>
+   		</div>
+   		<div class="main">
+   			<div class="container">
+   				<div class="row">
+   					<div class="col-md-7 main-left">
+   						<form id="registerForm" action="#" method="post">
+							<div class="input-group input-group-lg">
+							  <div class="input-group-prepend">
+								<span class="input-group-text" style="letter-spacing: 11px;">用户名</span>
+							  </div>
+							  <input type="text" class="form-control" id="userName" name="userName" value="" placeholder="您的账户名和登录名" autofocus/>
+							  <div class="rightMsg"></div>
+							</div>
+							<div class="my-2">&nbsp;</div>
+							<div class="input-group input-group-lg">
+							  <div class="input-group-prepend">
+								<span class="input-group-text" style="letter-spacing: 3px;">设置密码</span>
+							  </div>
+							  <input id="password" class="form-control" type="password" name="password" placeholder="建议至少使用两种字符组合"/>
+							  <div class="rightMsg"></div>
+							</div>
+							<div class="my-2">&nbsp;<span id="passwordRight"></span></div>
+							<div class="input-group input-group-lg">
+							  <div class="input-group-prepend">
+								<span class="input-group-text" style="letter-spacing: 3px;">确认密码</span>
+							  </div>
+							  <input id="repassword" class="form-control" type="password" name="repassword" placeholder="请再次输入密码"/>
+							  <div class="rightMsg"></div>
+							</div>
+							<div class="my-2">&nbsp;</div>
+							<div class="input-group input-group-lg">
+							  <div class="input-group-prepend">
+								<span class="input-group-text">中国 0086</span>
+							  </div>
+							  <input id="phone" class="form-control" type="text" placeholder="建议使用常用手机" name="phone" />
+							  <div class="rightMsg"></div>
+							</div>
+							<div class="my-2">&nbsp;</div>
+							<div class="input-group input-group-lg">
+							  <div class="input-group-prepend">
+								<span class="input-group-text">验证码</span>
+							  </div>
+							  <input type="text" class="form-control" id="validateCode" name="validateCode" placeholder="验证码"/>							  
+							  <div class="input-group-prepend">
+								<img src="manager/validateCode/createValidateCode.do" class="createValidateCode" style="display:inline"/>
+								<span class="input-group-text"><a class="btn btn-link createValidateCode" id="">看不清</a></span>
+							  </div>
+							  <div class="rightMsg" id="validateCodeMsg"></div>
+							</div>
+							<div class="my-2">&nbsp;</div>
+							<input type="submit" id="registerBt" class="btn btn-lg btn-block btn-danger" value="立即注册"/>
+						</form>
+					</div>
+					<div class="col-md-5">
+						<ul id="enterprise_ul">
+							<li>
+								<img src="common/images/enterprise.png"/>
+								<a href="#" class="jd_link_2">企业用户注册</a>
+							</li>
+							<li class="jd_li_1"></li>
+							<li>
+								<img src="common/images/ic.png"/>
+								<a href="#" class="jd_link_2">INTERNATIONAL <br>CUSTOMERS</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+   			</div>
+		</div>
+   		<div class="footer">
+   			<div class="container" style="border-top:1px solid #cccccc">
+   				<ul class="nav justify-content-center mt-4">
+   					<li class="nav-link"><a href="http://jd.com">关于我们</a></li>
+					<li class="nav-link">|</li>
+					<li class="nav-link"><a href="#">联系我们</a></li>
+					<li class="nav-link">|</li>
+					<li class="nav-link"><a href="#">人才招聘</a></li>
+					<li class="nav-link">|</li>
+					<li class="nav-link"><a href="#">商家入驻</a></li>
+					<li class="nav-link">|</li>
+					<li class="nav-link"><a href="#">广告服务</a></li>
+					<li class="nav-link">|</li>
+					<li class="nav-link"><a href="#">手机京东</a></li>
+					<li class="nav-link">|</li>
+					<li class="nav-link"><a href="#">友情链接</a></li>
+					<li class="nav-link">|</li>
+					<li class="nav-link"><a href="#">销售联盟</a></li>
+					<li class="nav-link">|</li>
+					<li class="nav-link"><a href="#">京东社区</a></li>
+					<li class="nav-link">|</li>
+					<li class="nav-link"><a href="#">京东公益</a></li>
+					<li class="nav-link">|</li>
+					<li class="nav-link"><a href="#">English Site</a></li>
+				</ul>
+  				<div class="text-center mt-2 mb-4">Copyright &copy; 2004-2018 京东JD.com 版权所有</div>
+   			</div>   			
+   		</div>
+   	</div>
+  </body>
+</html>

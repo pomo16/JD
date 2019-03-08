@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>商品信息表</title>
+<script src="../common/js/jquery-3.3.1.min.js"></script>
+<link rel="stylesheet" type="text/css" href="../common/easyui/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="../common/easyui/themes/icon.css">
+<script type="text/javascript" src="../common/easyui/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="../common/easyui/easyui-lang-zh_CN.js"></script>
+<script src="../common/validation/jquery.validate.min.js"></script>
+<script src="../common/validation/messages_zh.min.js"></script>
+<script src="../common/validation/additional-methods.min.js"></script>
+<script src="../common/fileupload/jquery.ui.widget.js"></script>
+<script src="../common/fileupload/jquery.iframe-transport.js"></script>
+<script src="../common/fileupload/jquery.fileupload.js"></script>
+<script src="../common/fileupload/jquery.fileupload-process.js"></script>
+<script src="../common/fileupload/jquery.fileupload-validate.js"></script>
+<script type="text/javascript" src="product.js"></script>
+<style type="text/css">
+	#product_form input{width:250px}
+	span.error{color:red}
+</style>
+</head>
+<body>
+	<input id="fileupload" style="display:none" type="file" name="uploadFile">
+	<table id="product_table"></table>	
+	<div id="product_window" class="easyui-window" title="添加商品" data-options="iconCls:'icon-add',closed:true,minimizable:false,maximizable:false,collapsible:false,modal:true,resizable:false" style="width:700px;height:500px;padding:10px;display:none">
+		<form action="#" method="post" id="product_form">
+			<table width="650" border="0">
+				<tr>
+					<td width="100" align="right">商品编号：</td>
+					<td width="250"><input type="text" name="productCode" id="productCode"/></td>	
+					<td width="250" class="message"></td>				
+				</tr>
+				<tr>
+					<td align="right">商品名称：</td>
+					<td><input type="text" name="productName" id="productName"/></td>	
+					<td class="message"></td>					
+				</tr>
+				<tr>
+					<td align="right">价格(&yen;)：</td>
+					<td><input type="text" name="price"/></td>	
+					<td class="message"></td>					
+				</tr>
+				<tr>
+					<td align="right">重量(kg)：</td>
+					<td><input type="text" name="weight"/></td>	
+					<td class="message"></td>					
+				</tr>
+				<tr>
+					<td align="right">产地：</td>
+					<td><input type="text" name="place"/></td>	
+					<td class="message"></td>					
+				</tr>
+				<tr>
+					<td align="right">描述：</td>
+					<td><textarea cols="50" rows="4" name="description" style="width:250px"></textarea></td>	
+					<td class="message"></td>					
+				</tr>
+				<tr>
+					<td align="right">图片：</td>
+					<td colspan="2">
+						<a class="easyui-linkbutton" id="add_product_picture">选择图片</a>
+						<div id="file_uplad_message" style="margin:5px 0"></div>
+						<div id="progress" class="easyui-progressbar" style="display:none;"></div>
+						<img id="picture_img" src="" style="height:100px;display:none"/>
+						<input type="hidden" id="picture_input" name="picture"/>
+					</td>					
+				</tr>
+				<tr>
+					<td colspan="3" align="center">
+						<a class="easyui-linkbutton" iconCls="icon-add" id="addBtn">添加</a>
+						<a class="easyui-linkbutton" iconCls="icon-undo" id="resetBtn">重置</a>
+						<a class="easyui-linkbutton" iconCls="icon-cancel" id="cancelBtn">取消</a>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	
+	<div id="update_product_window" class="easyui-window" title="修改商品" data-options="iconCls:'icon-add',closed:true,minimizable:false,maximizable:false,collapsible:false,modal:true,resizable:false" style="width:700px;height:500px;padding:10px;display:none">
+		<form action="#" method="post" id="update_product_form">
+			<input type="hidden" id="idUpdate" name="id"/> 
+			<table width="650" border="0">
+				<tr>
+					<td width="100" align="right">商品编号：</td>
+					<td width="250" id="productCodeUpdate"></td>	
+					<td width="250" class="message"></td>				
+				</tr>
+				<tr>
+					<td align="right">商品名称：</td>
+					<td><input type="text" name="productName" id="productNameUpdate"/></td>	
+					<td class="message"></td>					
+				</tr>
+				<tr>
+					<td align="right">价格(&yen;)：</td>
+					<td><input type="text" name="price" id="priceUpdate"/></td>	
+					<td class="message"></td>					
+				</tr>
+				<tr>
+					<td align="right">重量(kg)：</td>
+					<td><input type="text" name="weight" id="weightUpdate"/></td>	
+					<td class="message"></td>					
+				</tr>
+				<tr>
+					<td align="right">产地：</td>
+					<td><input type="text" name="place" id="placeUpdate"/></td>	
+					<td class="message"></td>					
+				</tr>
+				<tr>
+					<td align="right">描述：</td>
+					<td><textarea cols="50" rows="4" name="description" style="width:250px" id="descriptionUpdate"></textarea></td>	
+					<td class="message"></td>					
+				</tr>
+				<tr>
+					<td align="right">图片：</td>
+					<td colspan="2">
+						<a class="easyui-linkbutton" id="add_product_picture_update">选择图片</a>
+						<div id="file_uplad_message_update" style="margin:5px 0"></div>
+						<div id="progress_update" class="easyui-progressbar" style="display:none;"></div>
+						<img id="picture_img_update" src="" style="height:100px;display:none"/>
+						<input type="hidden" id="picture_input_update" name="picture"/>
+					</td>					
+				</tr>
+				<tr>
+					<td colspan="3" align="center">
+						<a class="easyui-linkbutton" iconCls="icon-add" id="updateBtn">修改</a>
+						<a class="easyui-linkbutton" iconCls="icon-undo" id="updateResetBtn">重置</a>
+						<a class="easyui-linkbutton" iconCls="icon-cancel" id="updateCancelBtn">取消</a>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+		http://www.springframework.org/schema/aop
+		http://www.springframework.org/schema/aop/spring-aop-4.1.xsd
+		http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx-4.1.xsd
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context-4.1.xsd">
+	<!-- 扫描Controller,并将其生命周期纳入Spring管理 -->
+	<context:component-scan base-package="com.ssm.*.bo" />
+	
+	<!-- 配置数据源,建立dbcp2连接池 -->
+	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+		<!-- 基本属性 url、user、password、驱动类 -->
+		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property>
+		<property name="url" value="jdbc:mysql://localhost:3306/jd?useSSL=false&amp;serverTimezone=UTC&amp;characterEncoding=utf-8"></property>
+		<property name="username" value="root"></property>
+		<property name="password" value="root9898008"></property>
+		<!-- 配置初始化大小、最小、最大 -->
+		<property name="initialSize" value="20"></property>
+		<property name="maxTotal" value="80"></property>
+		<property name="maxIdle" value="30"></property>
+		<property name="minIdle" value="20"></property>
+		<!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
+		<property name="timeBetweenEvictionRunsMillis" value="60000"></property>
+		<!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
+		<property name="minEvictableIdleTimeMillis" value="1800000"></property>
+	</bean>
+	
+	<!-- spring和MyBatis完美整合，不需要mybatis的配置映射文件 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<!-- 文件映射器，指定pojo类文件 -->
+		<property name="typeAliasesPackage" value="com.ssm.common.entity" />
+		<!-- 自动扫描存放SQL语句的xml文件 --> 
+		<property name="mapperLocations" value="classpath:com/ssm/common/mapper/*.xml" />
+	</bean>
+	<!-- 扫描DAO接口所在包名，Spring会自动查找其下的类 -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.ssm.*.dao" />
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
+	</bean>
+	
+	<!-- 配置事务管理器类-->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<!-- 配置事务增强 -->
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<!--
+				 propagation :事务传播行为
+				 isolation :事务的隔离级别
+				 read-only :只读
+				 rollback-for:发生哪些异常回滚
+				 no-rollback-for :发生哪些异常不回滚
+				 timeout :过期信息
+			 -->
+			<tx:method name="*" propagation="REQUIRED"/>
+		</tx:attributes>
+	</tx:advice>
+	<!-- 配置切面 -->
+	<aop:config>
+		<!-- 配置切入点 -->
+		<aop:pointcut expression="execution(* com.ssm..bo.*Bo.*(..))" id="interceptorPointCuts"/>
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="interceptorPointCuts"/>
+	</aop:config>
+</beans>

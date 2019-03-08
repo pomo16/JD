@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ssm.maintain.dao.ILoginInfoDao" >
+  <resultMap id="BaseResultMap" type="com.ssm.common.entity.LoginInfo">
+    <id column="id" property="id" jdbcType="INTEGER" />    
+    <result column="user_id" property="userId" jdbcType="INTEGER" />  
+    <result column="login_time" jdbcType="TIMESTAMP" property="loginTime" />  
+    <result column="login_ip" property="loginIp" jdbcType="VARCHAR" />
+  </resultMap> 
+  
+  <!-- 获取当前用户所有登录信息 -->
+  <select id="getAllLoginInfo" resultMap="BaseResultMap" parameterType="int">
+    select * from login_info where user_id = #{userId,jdbcType=INTEGER}
+  </select>  
+  
+  <!-- 统计当前用户所有登录信息 -->
+  <select id="countLoginInfo" resultType="int" parameterType="int">
+    select count(*) from login_info where user_id = #{userId,jdbcType=INTEGER}
+  </select>
+  
+  <!-- 添加登录信息 -->
+  <insert id="insert" parameterType="LoginInfo" >
+    insert into login_info (user_id, login_time,login_ip)
+    values (#{userId,jdbcType=INTEGER},#{loginTime,jdbcType=TIMESTAMP},#{loginIp,jdbcType=VARCHAR})
+  </insert>
+</mapper>

@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="common/bootstrap/bootstrap.min.css">
+	<script src="common/js/jquery-3.3.1.min.js"></script>
+	<script src="common/bootstrap/bootstrap.min.js"></script>
+
+	<!-- Font Awesome CSS -->
+	<link rel="stylesheet" type="text/css" href="common/fontawesome/css/all.min.css">
+	
+	<link rel="stylesheet" href="common/css/jd.css">
+	<script type="text/javascript" src="login.js"></script>
+	<title>京东-欢迎登录</title>
+	<style type="text/css">
+		.nav-link {padding: 0.5rem;}
+		.main .input-group-text, .main .form-control{border-radius: 0 !important;}
+		.main .input-group-text{width: 40px;}
+		.main .btn{border-radius: 0}
+		.main .row{
+			height: 475px;
+			margin: 0 auto;
+			background-image: url(common/image/login_bg.jpg);
+			background-repeat: no-repeat;
+			padding: 70px 30px;
+		}
+	</style>
+</head>
+<body>
+	<div class="page">
+		<div class="header" style="background: none;">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<img src="common/image/logo.png">
+						<div class="jd_font_1 title">欢迎登录</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="main" style="background-color: #2aa8f3;">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-4 offset-md-8" style="background-color: #ffffff;padding: 0">
+						<div class="jd_font_3" style="margin: 30px 0 0 50px">
+							账户登录
+							<span id="errorMessage" class="jd_font_4"></span>
+						</div>
+						<div class="jd_li_1"></div>
+						<form id="loginForm" action="#" method="post" class="px-3">
+							<div class="input-group mb-3 mb-3">
+								<div class="input-group-prepend">
+									<span class="input-group-text">
+										<i class="fas fa-user" style="color: #807E7E;"></i>
+									</span>
+								</div>
+								<input type="text" class="form-control" id="userName" name="userName" placeholder="用户名" autofocus/>
+							</div>
+							<div class="input-group mb-3 mb-3">
+								<div class="input-group-prepend">
+									<span class="input-group-text">
+										<i class="fas fa-lock" style="color: #807E7E;"></i>
+									</span>
+								</div>
+								<input type="password" class="form-control" id="password" name="password" placeholder="密码"/>
+							</div>
+							<input type="button" id="loginBt" class="btn btn-lg btn-block btn-danger" value="登 录">
+						</form>
+						<div class="jd_li_1"></div>
+						<div class="text-right pr-3">
+							<i class="fas fa-chevron-circle-right fa-lg" style="color: #b61d1d;"></i>
+							<a href="register.html" class="jd_link_3">立即注册</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="footer">
+			<div class="container" style="border-top: 1px solid #cccccc">
+				<ul class="nav justify-content-center mt-4">
+					<li class="nav-link"><a href="http://jd.com">关于我们</a></li>
+					<li class="nav-link">|</li>
+					<li class="nav-link"><a href="#">联系我们</a></li>
+					<li class="nav-link">|</li>
+					<li class="nav-link"><a href="#">人才招聘</a></li>
+					<li class="nav-link">|</li>
+					<li class="nav-link"><a href="#">商家入驻</a></li>
+					<li class="nav-link">|</li>
+					<li class="nav-link" class="nav-link"><a href="#">广告服务</a></li>
+					<li class="nav-link">|</li>
+					<li class="nav-link"><a href="#">手机京东</a></li>
+					<li class="nav-link">|</li>
+					<li class="nav-link"><a href="#">友情链接</a></li>
+					<li class="nav-link">|</li>
+					<li class="nav-link"><a href="#">销售联盟</a></li>
+					<li class="nav-link">|</li>
+					<li class="nav-link"><a href="#">京东社区</a></li>
+					<li class="nav-link">|</li>
+					<li class="nav-link"><a href="#">京东公益</a></li>
+					<li class="nav-link">|</li>
+					<li class="nav-link"><a href="#">English Site</a></li>
+				</ul>
+				<div class="text-center mt-2 mb-4">Copyright &copy; 2004-2018  京东JD.com 版权所有</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

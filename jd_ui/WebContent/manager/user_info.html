@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>用户信息表</title>
+<script src="../common/js/jquery-3.3.1.min.js"></script>
+<link rel="stylesheet" type="text/css" href="../common/easyui/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="../common/easyui/themes/icon.css">
+<script type="text/javascript" src="../common/easyui/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="../common/easyui/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("#user_info_table").datagrid({
+			title:'用户信息表',
+			singleSelect:false,
+			collapsible:true,
+			url:'QueryUserServlet',
+			method:'get',
+			rownumbers:true,
+			iconCls:'icon-save',
+			pagination:true,
+			pageList:[2,5,8,10],
+			pageSize:10,
+			width:1000,
+			height:480,
+			columns:[[
+				{field:'ck',checkbox:true},
+				{field:'userName',title:'用户名',width:200},
+				{field:'phone',title:'手机',width:500},
+				{field:'id',title:'操作',width:200,
+					formatter: function(value,row,index){
+						// value是数据库中的id;row是行对象,phone和userName这些都是它的属性;index是序号,从零开始计数
+						return "<a href='login_info.html?userId=" + value + "' class='jd_btn'>登录详情</a>";
+					}
+				}
+			]],
+			onLoadSuccess:function(data){
+				$('.jd_btn').linkbutton({
+					plain:true,
+					iconCls:'icon-search'
+				});
+			}
+		});
+	});
+</script>
+</head>
+<body>
+	<!-- <table class="easyui-datagrid" title="用户信息表" style="width:1000px;height:480px"
+			data-options="singleSelect:false,collapsible:true,url:'QueryUserServlet',method:'get',rownumbers:true,iconCls:'icon-save',pagination:true,pageList:[2,5,8,10],pageSize:10,pageNum:3">
+		<thead>
+			<tr>
+				<th data-options="field:'ck',checkbox:true"></th>
+				<th data-options="field:'userName',width:200">用户名</th>
+				<th data-options="field:'phone',width:700,align:'left'">手机</th>
+			</tr>
+		</thead>
+	</table> -->
+	<table id="user_info_table">
+	
+	</table>
+</body>
+</html>

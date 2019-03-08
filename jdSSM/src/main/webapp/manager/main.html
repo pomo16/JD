@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>京东后台管理主页</title>
+<script src="../common/js/jquery-3.3.1.min.js"></script>
+<link rel="stylesheet" type="text/css" href="../common/easyui/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="../common/easyui/themes/icon.css">
+<script type="text/javascript" src="../common/easyui/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="../common/easyui/easyui-lang-zh_CN.js"></script>
+<link href="../common/css/jd.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="main.js"></script>
+<style type="text/css">
+	#jd_tabs .tabs-panels .panel-body{overflow:hidden}
+</style>
+</head>
+<body class="easyui-layout">
+	<div data-options="region:'north',border:false" style="height:45px;background:#B3DFDA;padding:5px">
+		<img src="../common/images/logo.png" style="height:30px;float:left"/>
+		<span class="jd_font_2" style="margin:7px 0 0 20px;float:left;">京东后台管理</span>
+		<a id="exit_btn" href="#" class="easyui-linkbutton" style="float:right;margin-top:3px" data-options="iconCls:'icon-cancel',plain:true">退出</a>		
+	</div>
+	<div data-options="region:'west',split:true,title:'导航菜单'" style="width:180px;" id="menu">
+		<div class="easyui-accordion" data-options="width:'173px',border:false" id="menu_accordion">
+			<div title="系统信息" data-options="iconCls:'icon-help'" style="overflow:auto;padding:10px;">
+				<a rel="user_info.html" class="easyui-linkbutton" iconCls="icon-help" data-options="plain:true">用户信息</a>
+				<a rel="product.html" class="easyui-linkbutton" iconCls="icon-help" data-options="plain:true">商品信息</a>
+			</div>
+			<div title="系统管理" data-options="iconCls:'icon-edit'" style="padding:10px;">
+				<a rel="user_info_opt.html" class="easyui-linkbutton" iconCls="icon-edit" data-options="plain:true">用户信息管理</a>
+				<a rel="product_opt.html" class="easyui-linkbutton" iconCls="icon-edit" data-options="plain:true">商品信息管理</a>
+			</div>
+			<!-- <div title="商品管理" data-options="iconCls:'icon-search'" style="padding:10px 0;">
+				<ul class="easyui-tree">
+					<li>
+						<span>Foods</span>
+						<ul>
+							<li>
+								<span>Fruits</span>
+								<ul>
+									<li><a href="">apple</a></li>
+									<li>orange</li>
+								</ul>
+							</li>
+							<li>
+								<span>Vegetables</span>
+								<ul>
+									<li>tomato</li>
+									<li>carrot</li>
+									<li>cabbage</li>
+									<li>potato</li>
+									<li>lettuce</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				
+			</div> -->
+		</div>	
+	</div>
+	<div data-options="region:'south',border:false" style="height:30px;background:#A9FACD;padding:3px;text-align:center">
+		<span style="font-size:12px">Copyright &copy; 2004-2018 京东JD.com 版权所有</span>
+	</div>
+	<div data-options="region:'center'">
+		<div class="easyui-tabs" data-options="fit:true,border:false" id="jd_tabs">
+			<div title="首页" style="padding:50px">
+				<h1>欢迎进入京东后台管理系统！</h1>
+			</div>
+		</div>		
+	</div>
+	<div id="tabs_menu" class="easyui-menu" style="width:120px;">
+		<div id="tab_close" data-options="iconCls:'icon-no'">关闭标签页</div>
+		<div id="tab_close_all" data-options="iconCls:'icon-no'">关闭所有标签页</div>
+		<div id="tab_close_other" data-options="iconCls:'icon-no'">关闭其他标签页</div>
+		<div id="tab_close_right" data-options="iconCls:'icon-no'">关闭右侧标签页</div>
+		<div id="tab_close_left" data-options="iconCls:'icon-no'">关闭左侧标签页</div>
+		<div class="menu-sep"></div>
+		<div id="exit_menu" data-options="iconCls:'icon-clear'">退出</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>用户信息表</title>
+<script src="../common/js/jquery-3.3.1.min.js"></script>
+<link rel="stylesheet" type="text/css" href="../common/easyui/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="../common/easyui/themes/icon.css">
+<script type="text/javascript" src="../common/easyui/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="../common/easyui/easyui-lang-zh_CN.js"></script>
+<script src="../common/validation/jquery.validate.min.js"></script>
+<script src="../common/validation/messages_zh.min.js"></script>
+<script src="../common/validation/additional-methods.min.js"></script>
+<script type="text/javascript" src="user_info_opt.js"></script>
+</head>
+<body>
+	<table id="user_info_table"></table>
+	<div id="update_user_window" class="easyui-window" title="修改用户信息" data-options="iconCls:'icon-add',closed:true,minimizable:false,maximizable:false,collapsible:false,modal:true,resizable:false" style="width:700px;height:500px;padding:10px;display:none">
+		<form action="#" method="post" id="update_user_form">
+			<input type="hidden" id="idUpdate" name="id"/> 
+			<table width="650" border="0">
+				<tr>
+					<td width="100" align="right">用户名：</td>
+					<td width="250" id="userName"></td>	
+					<td width="250" class="message"></td>				
+				</tr>
+				<tr>
+					<td align="right">手机：</td>
+					<td><input type="text" name="phone" id="phone"/></td>	
+					<td class="message"></td>					
+				</tr>
+				<tr>
+					<td colspan="3" align="center">
+						<a class="easyui-linkbutton" iconCls="icon-add" id="updateBtn">修改</a>
+						<a class="easyui-linkbutton" iconCls="icon-undo" id="updateResetBtn">重置</a>
+						<a class="easyui-linkbutton" iconCls="icon-cancel" id="updateCancelBtn">取消</a>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>fileUpload</title>
+<script src="../common/js/jquery-3.3.1.min.js"></script>
+<script src="../common/fileupload/jquery.ui.widget.js"></script>
+<script src="../common/fileupload/jquery.iframe-transport.js"></script>
+<script src="../common/fileupload/jquery.fileupload.js"></script>
+<script src="../common/fileupload/jquery.fileupload-process.js"></script>
+<script src="../common/fileupload/jquery.fileupload-validate.js"></script>
+<link rel="stylesheet" href="../common/bootstrap/bootstrap.min.css">
+<script src="../common/bootstrap/bootstrap.min.js"></script>
+<script type="text/javascript">
+	var index = 0;
+	$(function(){
+		$("#fileupload").fileupload({
+	        dataType: 'json',
+	        sequentialUploads: true,
+	        acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i,
+            maxFileSize: 1024 * 1024 *3,
+            minFileSize: 1024 * 1024 * 2,
+            maxNumberOfFiles: 2,
+            messages: {
+                maxNumberOfFiles: '最多上传2个文件',
+                acceptFileTypes: '文件类型错误',
+                maxFileSize: '文件不能超过3M',
+                minFileSize: '文件不能小于2M'
+            },
+	        done: function (e, data) {
+	          // console.log(data);
+	           if(data.result.key == "ok"){
+	        	   $("#message_" + index).append("<span style='color:green;margin-left:50px'>上传完毕</span>")
+	           }
+	           index++;
+	        },
+	        processfail:function(e,data){
+	        	//console.log(data);	        	
+	        	var fileName = data.files[data.index].name;
+	        	var error = data.files[data.index].error;
+	        	$("#file_upload_div").append("<div style='color:red'>" + fileName + " " + error + "</div>");    
+	        },
+	        progress: function (e, data) {
+	        	//console.log(data);
+	            if($("#bar_" + index).length==0){
+	            	var message = $("<div/>",{"id":"message_" + index,text:"正在上传：" + data.files[0].name});
+	            	$("<span/>").appendTo(message);
+	            	var progress = $("<div/>",{"class":"progress"});
+	            	var progressBar = $("<div/>",{"id":"bar_" + index,"class":"progress-bar bg-success progress-bar-striped progress-bar-animated","role":"progressbar","style":"width: 0%"});
+	            	progressBar.appendTo(progress);
+	            	message.appendTo($("#file_upload_div"));
+	            	progress.appendTo($("#file_upload_div"));	            	
+	            }
+	            var loaded = (data.loaded/1024/1024).toFixed(2) + "M";
+	            var total = (data.total/1024/1024).toFixed(2) + "M";
+	            var bitrate = (data.bitrate/1024/1024).toFixed(2) + "M";
+	        	var progress = parseInt(data.loaded / data.total * 100);
+	            $("#bar_" + index).css('width',progress + '%');
+	            $("#message_" + index + " span").html(" 已上传：" + loaded + " 文件大小：" + total + " 上传速度：" + bitrate);
+	        }
+	        /*progressall: function (e, data) {
+	            var progress = parseInt(data.loaded / data.total * 100);
+	            $('.progress .progress-bar').css('width',progress + '%');
+	        }*/
+	        
+	    });
+		
+		$("#selectFileBtn").click(function(){
+			$("#message").html("");
+			$("#file_upload_div").html("");
+			$("#fileupload").click();
+		});
+	});
+</script>
+<style>
+	.bar {
+	    height: 8px;
+	    background: green;
+	    border-radius:10px;
+	    background-image:url(../common/fileupload/progressbar.gif);
+	}
+</style>
+</head>
+<body>
+	<form action="TestServlet">
+		userName:<input type="text" name="userName"/>
+		<br>
+		File: <input type="button" value="请选择文件" id="selectFileBtn"/>
+		<br>
+		<div id="file_upload_div"></div>
+		<input type="submit" value="确定"/>
+	</form>
+	<input id="fileupload" style="display:none" type="file" name="files[]" data-url="FileUploadServlet" multiple>
+</body>
+</html>

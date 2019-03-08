@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>商品信息表</title>
+	<script src="../common/js/jquery-3.3.1.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="../common/easyui/themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="../common/easyui/themes/icon.css">
+	<script type="text/javascript" src="../common/easyui/jquery.easyui.min.js"></script>
+	<script type="text/javascript" src="../common/easyui/easyui-lang-zh_CN.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$("#product_info_table").datagrid({
+				title:'商品信息表',
+				singleSelect:false,
+				collapsible:false,
+				url:'product/productList.do',
+				method:'get',
+				rownumbers:true,
+				iconCls:'icon-save',
+				pagination:true,
+				pageList:[10,20,40],
+				pageSize:10,
+				width:1000,
+				height:480,
+				columns:[[
+					{field:'ck',checkbox:true},
+				    {field:'productCode',title:'商品编号',width:150},
+				    {field:'productName',title:'商品名称',width:150},
+				    {field:'price',title:'价格(&yen;)',width:100},
+				    {field:'weight',title:'重量(kg)',width:100},
+				    {field:'place',title:'产地',width:100},
+				    {field:'description',title:'描述',width:200,align:'center',
+				    	formatter: function(value,row,index){
+							return "<textarea cols='20' rows='5' readonly style='border-radius:5px'>" + value + "</textarea>";
+						}			    
+				    },
+				    {field:'picture',title:'图片',width:150,align:'center',
+				    	formatter: function(value,row,index){
+				    		if(value==""){
+				    			return "";
+				    		}else{
+								return "<img style='width:100px;height:80px' src='../common/images/product/" + value + "?" + new Date().getTime() + "' style='width:80px;border-radius:5px;border:1px solid #ddd'/>";
+				    		}
+						}
+				    }
+				]],
+				toolbar: [{
+					iconCls: 'icon-mini-refresh',
+					text:'刷新',
+					handler: function(){
+						$('#product_info_table').datagrid('reload'); 
+					}
+				}]
+			});
+		});
+	</script>
+</head>
+<body>
+	<table id="product_info_table"></table>
+</body>
+</html>

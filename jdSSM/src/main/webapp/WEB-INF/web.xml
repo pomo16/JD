@@ -63,4 +63,8 @@
 		<filter-name>FormContentFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+	<!-- 设置欢迎界面 -->
+	<welcome-file-list>
+		<welcome-file>login.html</welcome-file>
+	</welcome-file-list>
 </web-app>

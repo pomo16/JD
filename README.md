@@ -80,3 +80,9 @@
   - 后台：ssm + maven + junit4 (单元测试)
   - 数据库：MySQL
   - 安全性：MD5加密算法 + JSR 303 后端校验
+  
+  #### 项目效果
+  http://www.pomo16.club:8080/jdSSM/
+
+  - Tomcat 9.0.10xiao
+  - Tomcat 9.0.10

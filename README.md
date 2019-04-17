@@ -83,6 +83,3 @@
   
   #### 项目效果
   http://www.pomo16.club:8080/jdSSM/
-
-  - Tomcat 9.0.10xiao
-  - Tomcat 9.0.10
